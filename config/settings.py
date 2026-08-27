@@ -28,14 +28,13 @@ DEBUG = True
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
-    "https://fran-portafolio.vercel.app/",
+    ".vercel.app",
+    "https://fran-portafolio.vercel.app",
     "https://fran-portafolio-git-main-noem-morales-projects.vercel.app",
-
-
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://fran-portafolio.vercel.app/",
+    "https://fran-portafolio.vercel.app",
     "https://fran-portafolio-git-main-noem-morales-projects.vercel.app",
 
 ]
@@ -49,7 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-       "portafolio",
+       'portafolio',
 ]
 
 MIDDLEWARE = [
@@ -136,5 +135,28 @@ STATIC_URL = 'static/'
 MAILERS = {
     'default': {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
+    },
+}
+# Rutas absolutas para archivos estáticos e imágenes/archivos subidos
+# Archivos Estáticos (CSS, JS, imágenes del proyecto)
+STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# Archivos subidos por los usuarios (Imágenes, PDF, etc.)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+# Configuración explícita de almacenamiento para evitar rutas vacías ''
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+        "LOCATION": MEDIA_ROOT,
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+        "LOCATION": STATIC_ROOT,
     },
 }
