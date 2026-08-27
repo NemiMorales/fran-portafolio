@@ -1,0 +1,203 @@
+{
+  "perfil": {
+    "nombre": "Francisco Muñoz Urbina",
+    "nombre_corto": "Francisco Muñoz",
+    "titulo": "Chef ejecutivo · Maestro chocolatero y pastelero",
+    "etiqueta": "CHOCOLATERO / PASTELERO",
+    "ubicacion": "Santiago de Chile",
+    "frase": "El chocolate también puede contar historias.",
+    "descripcion": "Trabaja el cacao como un material técnico y vivo: temperatura, cristalización, fórmula y tiempo. De ese rigor nace algo simple, un bocado que da calma y reúne a la gente alrededor de una mesa.",
+    "imagen_principal": "portafolio/img/hero-chocolate.png"
+  },
+  "filosofia": {
+    "numero": "01",
+    "titulo": "Un ingrediente de contrastes.",
+    "introduccion": "El chocolate es exigente. Pide medir, esperar, corregir la curva de temperatura y aceptar que un grado de más puede arruinar el trabajo de una mañana. Es química antes que postre.",
+    "parrafo": "Y sin embargo, el resultado hace lo contrario de lo que costó: relaja, alegra y se comparte. Ahí está el oficio de Francisco, en sostener las dos cosas al mismo tiempo.",
+    "cierre": "Un ingrediente noble, lleno de contrastes.",
+    "contrastes": [
+      {
+        "concepto": "Técnico",
+        "contraste": "pero emocional"
+      },
+      {
+        "concepto": "Artesanal",
+        "contraste": "pero contemporáneo"
+      },
+      {
+        "concepto": "De nicho",
+        "contraste": "pero social"
+      },
+      {
+        "concepto": "Endémico",
+        "contraste": "pero moderno"
+      }
+    ]
+  },
+  "especialidades": [
+    {
+      "nombre": "Chocolatería premium",
+      "descripcion": "Templado, cristalización y acabado de bombonería fina con estándar de producción constante.",
+      "icono": "chocolate"
+    },
+    {
+      "nombre": "Desarrollo de productos",
+      "descripcion": "De la idea al producto vendible: concepto, muestras, escalado y costeo.",
+      "icono": "development"
+    },
+    {
+      "nombre": "Formulación de recetas",
+      "descripcion": "Balance de grasas, azúcares y humedad; recetas replicables y estables en el tiempo.",
+      "icono": "formula"
+    },
+    {
+      "nombre": "Pastelería",
+      "descripcion": "Repostería de vitrina y de carta, con técnica clásica y lectura contemporánea.",
+      "icono": "pastry"
+    },
+    {
+      "nombre": "Control de calidad",
+      "descripcion": "Fichas técnicas, mermas, trazabilidad y revisión sensorial de cada lote.",
+      "icono": "quality"
+    },
+    {
+      "nombre": "Liderazgo de equipos",
+      "descripcion": "Organización de partidas, formación técnica y ritmo de trabajo en cocina.",
+      "icono": "leadership"
+    }
+  ],
+  "creaciones": {
+    "numero": "03",
+    "titulo": "Piezas de autor, hechas a mano.",
+    "items": [
+      {
+        "nombre": "Bombones de autor",
+        "categoria": "Chocolatería",
+        "descripcion": "Rellenos de temporada, cobertura fina y molde pulido a mano.",
+        "imagen": "portafolio/img/bombones-color.jpg",
+        "alt": "Bombones artesanales de autor"
+      },
+      {
+        "nombre": "Bombones de chocolate blanco",
+        "categoria": "Chocolatería",
+        "descripcion": "Coberturas claras, líneas precisas y acabados de bombonería fina.",
+        "imagen": "portafolio/img/bombones-blancos.jpg",
+        "alt": "Bombones de chocolate blanco con detalles oscuros"
+      },
+      {
+        "nombre": "Barras artesanales",
+        "categoria": "Producto",
+        "descripcion": "Formatos propios, inclusiones y perfiles de tueste distintos.",
+        "imagen": "portafolio/img/barras-chocolate.jpg",
+        "alt": "Barras artesanales de chocolate con inclusiones"
+      }
+    ]
+  },
+  "logros": [
+    {
+      "valor": "+13%",
+      "titulo": "Aumento de ventas",
+      "descripcion": "Contribución medida al crecimiento comercial."
+    },
+    {
+      "valor": "-28%",
+      "titulo": "Tiempos de entrega",
+      "descripcion": "Reducción en despachos a clientes corporativos."
+    },
+    {
+      "valor": "10+",
+      "titulo": "Años en cocina",
+      "descripcion": "Experiencia gastronómica acumulada."
+    }
+  ],
+  "experiencia": {
+    "numero": "04",
+    "titulo": "Cocinas donde se formó el oficio",
+    "items": [
+      {
+        "periodo": "Mayo 2025 — Actualidad",
+        "empresa": "LOVA Chocolates",
+        "cargo": "Chef Ejecutivo",
+        "descripcion": "Chocolatería premium, desarrollo de productos, costeo y liderazgo de equipo."
+      },
+      {
+        "periodo": "2022 — 2023",
+        "empresa": "Café Mirandes",
+        "cargo": "Chef Ejecutivo y Maestro Pastelero",
+        "descripcion": "Carta de pastelería, decoraciones de chocolate y operación diaria."
+      },
+      {
+        "periodo": "2019 — 2020",
+        "empresa": "Otten S.A.",
+        "cargo": "Ayudante de producción y Chocolatero",
+        "descripcion": "Producción, control de calidad y formulación en planta."
+      },
+      {
+        "periodo": "2019",
+        "empresa": "CIG Boragó",
+        "cargo": "Pastelero",
+        "descripcion": "Pastelería de alta cocina y trabajo con ingredientes endémicos."
+      }
+    ],
+    "experiencias_adicionales": [
+      "Pastelería Sinfonía",
+      "Wenger Haus",
+      "Giser S.A.",
+      "Testardos Pizza",
+      "99 Restaurante"
+    ]
+  },
+  "formacion": {
+    "numero": "05",
+    "titulo": "Cocina, laboratorio y código.",
+    "idiomas": [
+      "Inglés C1",
+      "Portugués en curso"
+    ],
+    "conocimientos": [
+      "SQL",
+      "JavaScript",
+      "HTML",
+      "Excel"
+    ],
+    "estudios": [
+      {
+        "tipo": "Carrera",
+        "nombre": "Administración Gastronómica Internacional",
+        "institucion": "INACAP",
+        "anio": "2016"
+      },
+      {
+        "tipo": "Técnico",
+        "nombre": "Programación y Análisis de Sistemas",
+        "institucion": "IACC",
+        "anio": "2024"
+      },
+      {
+        "tipo": "Especialización",
+        "nombre": "Chocolatería y Templado",
+        "institucion": "Artebianca",
+        "anio": "2018"
+      }
+    ],
+    "cursos": [
+      "Primeros Auxilios RCP — Mutual, 2019",
+      "Cocina Peruana — Lumen, 2018",
+      "Pastelería Tradicional Chilena — Artebianca, 2018"
+    ]
+  },
+  "contacto": {
+    "numero": "06",
+    "titulo": "Toda buena mesa empieza con una conversación.",
+    "descripcion": "Colaboraciones, desarrollo de producto, asesorías de chocolatería y proyectos de pastelería. Escribir es el primer paso.",
+    "boton": "Conversemos",
+    "instagram": "PLACEHOLDER_INSTAGRAM",
+    "linkedin": "PLACEHOLDER_LINKEDIN",
+    "email": "PLACEHOLDER_EMAIL"
+  },
+  "footer": {
+    "nombre": "Francisco Muñoz Urbina",
+    "descripcion": "Chef ejecutivo y maestro chocolatero · Santiago, Chile",
+    "copyright": "2026"
+  }
+}
