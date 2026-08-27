@@ -29,10 +29,15 @@ ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
     "https://fran-portafolio.vercel.app/",
+    "https://fran-portafolio-git-main-noem-morales-projects.vercel.app",
+
+
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     "https://fran-portafolio.vercel.app/",
+    "https://fran-portafolio-git-main-noem-morales-projects.vercel.app",
+
 ]
 
 # Application definition
