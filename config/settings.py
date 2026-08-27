@@ -28,11 +28,11 @@ DEBUG = True
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
-    "fran-portafolio-b6ix3ovsl-noem-morales-projects.vercel.app",
+    "https://fran-portafolio.vercel.app/",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://fran-portafolio-b6ix3ovsl-noem-morales-projects.vercel.app",
+    "https://fran-portafolio.vercel.app/",
 ]
 
 # Application definition
