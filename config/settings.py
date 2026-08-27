@@ -25,8 +25,15 @@ SECRET_KEY = 'django-insecure-in93i2ak1v7pgi(s1-)s+!hefs=z1ze4k9^$1pp!6p1y-ez)7n
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    "fran-portafolio-b6ix3ovsl-noem-morales-projects.vercel.app",
+]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://fran-portafolio-b6ix3ovsl-noem-morales-projects.vercel.app",
+]
 
 # Application definition
 
