@@ -1,0 +1,261 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portafolio profesional de {{ datos.perfil.nombre }}: chef ejecutivo, maestro chocolatero y pastelero.">
+    <meta name="theme-color" content="#211613">
+    <title>{{ datos.perfil.nombre }} · {{ datos.perfil.titulo }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'portafolio/css/styles.css' %}">
+</head>
+<body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+    <header class="site-header" data-header>
+        <div class="container nav-wrap">
+            <a class="brand" href="#inicio" aria-label="Ir al inicio">
+                <span class="brand-name">FRANCISCO MUÑOZ</span>
+                <span class="brand-role">{{ datos.perfil.etiqueta }}</span>
+            </a>
+
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>
+                <span class="sr-only">Abrir menú</span>
+                <span></span><span></span>
+            </button>
+
+            <nav class="site-nav" id="site-nav" aria-label="Navegación principal" data-nav>
+                <a href="#filosofia">01 Filosofía</a>
+                <a href="#sobre-francisco">Perfil</a>
+                <a href="#especialidades">02 Especialidades</a>
+                <a href="#creaciones">03 Creaciones</a>
+                <a href="#trayectoria">04 Trayectoria</a>
+                <a href="#formacion">05 Formación</a>
+                <a href="#contacto">06 Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="contenido">
+        <section class="hero" id="inicio" aria-labelledby="hero-title">
+            <div class="hero-grid container">
+                <div class="hero-copy">
+                    <p class="eyebrow">{{ datos.perfil.ubicacion }} <span aria-hidden="true">·</span> maestro chocolatero</p>
+                    <h1 id="hero-title">{{ datos.perfil.nombre }}</h1>
+                    <p class="hero-title">{{ datos.perfil.titulo }}</p>
+                    <blockquote>“{{ datos.perfil.frase }}”</blockquote>
+                    <p class="hero-description">{{ datos.perfil.descripcion }}</p>
+                    <div class="hero-actions">
+                        <a class="button button--primary" href="#trayectoria">Conocer su trayectoria <span aria-hidden="true">↗</span></a>
+                        <a class="button button--text" href="#creaciones">Explorar creaciones <span aria-hidden="true">↓</span></a>
+                    </div>
+                </div>
+
+                <div class="hero-media">
+                    <figure class="hero-figure">
+                        <img class="hero-image" src="{% static datos.perfil.imagen_principal %}" alt="Manos trabajando chocolate templado junto a cacao y herramientas de chocolatería" fetchpriority="high">
+                        <figcaption class="hero-image-label">CHOCOLATE TEMPLADO / MANOS TRABAJANDO</figcaption>
+                    </figure>
+                    <div class="hero-caption">
+                        <span>Chef ejecutivo · LOVA Chocolates</span>
+                        <span>Desde mayo 2025</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-scroll" aria-hidden="true">Scroll para explorar <span>↓</span></div>
+        </section>
+
+        <section class="section philosophy" id="filosofia" aria-labelledby="filosofia-title">
+            <div class="container">
+                <div class="section-heading section-heading--split">
+                    <p class="section-index">{{ datos.filosofia.numero }} <span>·</span> FILOSOFÍA</p>
+                    <p class="section-kicker">La materia como lenguaje</p>
+                </div>
+                <div class="philosophy-grid">
+                    <div>
+                        <h2 id="filosofia-title">{{ datos.filosofia.titulo }}</h2>
+                        <p class="lead">{{ datos.filosofia.introduccion }}</p>
+                    </div>
+                    <div class="philosophy-body">
+                        <p>{{ datos.filosofia.parrafo }}</p>
+                        <p class="closing-line">{{ datos.filosofia.cierre }}</p>
+                    </div>
+                </div>
+                <div class="contrast-list" aria-label="Contrastes del chocolate">
+                    {% for contraste in datos.filosofia.contrastes %}
+                    <div class="contrast-item">
+                        <span>{{ contraste.concepto }}</span>
+                        <i aria-hidden="true"></i>
+                        <em>{{ contraste.contraste }}</em>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+        <section class="section about" id="sobre-francisco" aria-labelledby="sobre-francisco-title">
+            <div class="container about-grid">
+                <div class="about-media">
+                    <figure class="portrait-figure">
+                        <img src="{% static 'portafolio/img/fran-retrato.jpg' %}" alt="Retrato de Francisco Muñoz Urbina en un espacio gastronómico" loading="lazy">
+                        <figcaption>FRANCISCO MUÑOZ URBINA · CHEF EJECUTIVO</figcaption>
+                    </figure>
+                    <div class="detail-strip">
+                        <figure>
+                            <img src="{% static 'portafolio/img/bombon-detalle.jpg' %}" alt="Detalle de un bombón de chocolate con acabado artesanal" loading="lazy">
+                            <figcaption>DETALLE · ACABADO ARTESANAL</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="{% static 'portafolio/img/chocolate-trabajo.jpg' %}" alt="Bombón de chocolate sostenido durante el trabajo de cocina" loading="lazy">
+                            <figcaption>OFICIO · TRABAJO MANUAL</figcaption>
+                        </figure>
+                    </div>
+                </div>
+                <div class="about-copy">
+                    <p class="section-index">00 <span>·</span> SOBRE FRANCISCO</p>
+                    <h2 id="sobre-francisco-title">Una mirada técnica, una mano sensible.</h2>
+                    <p class="about-lead">{{ datos.perfil.descripcion }}</p>
+                    <p>{{ datos.filosofia.parrafo }}</p>
+                    <div class="process-note">
+                        <img src="{% static 'portafolio/img/chocolate-proceso.jpg' %}" alt="Proceso de elaboración de una pieza de chocolate" loading="lazy">
+                        <div>
+                            <span class="card-eyebrow">EL PROCESO</span>
+                            <p>Temperatura, textura y tiempo se encuentran en cada pieza.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section specialties" id="especialidades" aria-labelledby="especialidades-title">
+            <div class="container">
+                <div class="section-heading section-heading--split">
+                    <p class="section-index">02 <span>·</span> ESPECIALIDADES</p>
+                    <h2 id="especialidades-title">Lo que domina el oficio</h2>
+                </div>
+                <div class="specialty-grid">
+                    {% for especialidad in datos.especialidades %}
+                    <article class="specialty-card">
+                        <span class="card-index">0{{ forloop.counter }}</span>
+                        <div class="specialty-symbol specialty-symbol--{{ especialidad.icono }}" aria-hidden="true"></div>
+                        <h3>{{ especialidad.nombre }}</h3>
+                        <p>{{ especialidad.descripcion }}</p>
+                    </article>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+        <section class="section creations" id="creaciones" aria-labelledby="creaciones-title">
+            <div class="container">
+                <div class="section-heading section-heading--split">
+                    <p class="section-index">{{ datos.creaciones.numero }} <span>·</span> CREACIONES</p>
+                    <h2 id="creaciones-title">{{ datos.creaciones.titulo }}</h2>
+                </div>
+                <div class="creation-grid">
+                    {% for creacion in datos.creaciones.items %}
+                    <article class="creation-card">
+                        <figure class="creation-media">
+                            <img src="{% static creacion.imagen %}" alt="{{ creacion.alt }}" loading="lazy">
+                        </figure>
+                        <div class="creation-meta">
+                            <p class="card-eyebrow">{{ creacion.categoria }}</p>
+                            <h3>{{ creacion.nombre }}</h3>
+                            <p>{{ creacion.descripcion }}</p>
+                        </div>
+                    </article>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+        <section class="metrics" aria-label="Resultados destacados">
+            <div class="container metrics-grid">
+                {% for logro in datos.logros %}
+                <article class="metric">
+                    <strong>{{ logro.valor }}</strong>
+                    <h3>{{ logro.titulo }}</h3>
+                    <p>{{ logro.descripcion }}</p>
+                </article>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section class="section trajectory" id="trayectoria" aria-labelledby="trayectoria-title">
+            <div class="container">
+                <div class="section-heading section-heading--split">
+                    <p class="section-index">{{ datos.experiencia.numero }} <span>·</span> TRAYECTORIA</p>
+                    <h2 id="trayectoria-title">{{ datos.experiencia.titulo }}</h2>
+                </div>
+                <div class="experience-list">
+                    {% for trabajo in datos.experiencia.items %}
+                    <article class="experience-item">
+                        <p class="experience-period">{{ trabajo.periodo }}</p>
+                        <div class="experience-main">
+                            <h3>{{ trabajo.empresa }}</h3>
+                            <p class="experience-role">{{ trabajo.cargo }}</p>
+                        </div>
+                        <p class="experience-description">{{ trabajo.descripcion }}</p>
+                    </article>
+                    {% endfor %}
+                </div>
+                <p class="also-worked">También: {% for lugar in datos.experiencia.experiencias_adicionales %}<span>{{ lugar }}</span>{% if not forloop.last %} · {% endif %}{% endfor %}</p>
+            </div>
+        </section>
+
+        <section class="section training" id="formacion" aria-labelledby="formacion-title">
+            <div class="container">
+                <div class="section-heading section-heading--split">
+                    <p class="section-index">{{ datos.formacion.numero }} <span>·</span> FORMACIÓN</p>
+                    <h2 id="formacion-title">{{ datos.formacion.titulo }}</h2>
+                </div>
+                <div class="training-topline">
+                    <p>Idiomas <span>{% for idioma in datos.formacion.idiomas %}{{ idioma }}{% if not forloop.last %} · {% endif %}{% endfor %}</span></p>
+                    <p>Herramientas <span>{% for conocimiento in datos.formacion.conocimientos %}{{ conocimiento }}{% if not forloop.last %} · {% endif %}{% endfor %}</span></p>
+                </div>
+                <div class="education-grid">
+                    {% for estudio in datos.formacion.estudios %}
+                    <article class="education-card">
+                        <p class="card-eyebrow">{{ estudio.tipo }} <span>{{ estudio.anio }}</span></p>
+                        <h3>{{ estudio.nombre }}</h3>
+                        <p>{{ estudio.institucion }}</p>
+                    </article>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+        <section class="contact" id="contacto" aria-labelledby="contacto-title">
+            <div class="container contact-grid">
+                <p class="section-index">{{ datos.contacto.numero }} <span>·</span> CONTACTO</p>
+                <div class="contact-copy">
+                    <h2 id="contacto-title">{{ datos.contacto.titulo }}</h2>
+                    <p>{{ datos.contacto.descripcion }}</p>
+                    <!-- Este enlace puede reemplazarse por la URL de un formulario Django. -->
+                    <a class="button button--light" href="#contacto">{{ datos.contacto.boton }} <span aria-hidden="true">↗</span></a>
+                </div>
+                <div class="contact-links" aria-label="Redes sociales">
+                    <span>Instagram <small>PLACEHOLDER</small></span>
+                    <span>LinkedIn <small>PLACEHOLDER</small></span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <p class="footer-name">{{ datos.footer.nombre }}</p>
+                <p>{{ datos.footer.descripcion }}</p>
+            </div>
+            <div class="footer-signature">F M <span>·</span> C P</div>
+            <p class="footer-copy">© {{ datos.footer.copyright }} <br>Portafolio profesional</p>
+        </div>
+    </footer>
+
+    <script src="{% static 'portafolio/js/main.js' %}" defer></script>
+</body>
+</html>
