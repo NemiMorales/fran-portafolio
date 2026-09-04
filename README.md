@@ -21,7 +21,7 @@ Después de revisar y validar la propuesta de diseño, Codex implementó el fron
 * HTML5
 * CSS3
 * JSON
-* SQLite, utilizada para preparar y migrar los modelos
+* SQLite, disponible para la futura persistencia de los modelos
 * Git y GitHub
 * Vercel
 * Claude Design
@@ -65,14 +65,16 @@ La View recibe la solicitud del navegador, lee la información almacenada en el 
 
 ## Modelos Django
 
-Como parte de la evolución del proyecto, se definieron modelos para representar:
+En esta evaluación se solicitó trabajar con los datos almacenados en el archivo `portafolio/data/fran.json`. Actualmente, la View lee ese archivo y envía su contenido al Template mediante el contexto `datos`; por lo tanto, la información mostrada en el sitio todavía no se obtiene desde la base de datos.
+
+Como preparación para la próxima evaluación, se definieron modelos Django para representar:
 
 * Especialidades.
 * Creaciones.
 * Logros.
 * Experiencias laborales.
 
-Estos modelos fueron preparados y migrados para que, en futuras versiones, el contenido pueda dejar de depender exclusivamente del archivo JSON y comenzar a administrarse desde una base de datos.
+Los modelos quedan listos como base para la siguiente etapa del proyecto. En la próxima evaluación se podrán crear y aplicar sus migraciones, conectarlos con las Views y reemplazar gradualmente la lectura del archivo JSON por datos administrados mediante la base de datos. Esta separación es intencional y responde a lo solicitado para la evaluación actual.
 
 ## Uso de inteligencia artificial
 
