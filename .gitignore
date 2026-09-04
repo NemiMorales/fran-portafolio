@@ -1,2 +1,4 @@
 gitcommit.txt
 /.venv
+__pycache__/
+*.py[cod]
