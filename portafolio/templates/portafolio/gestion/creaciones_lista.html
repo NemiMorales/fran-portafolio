@@ -1,0 +1,30 @@
+{% extends 'portafolio/gestion/base.html' %}
+{% block content %}
+  <div class="page-heading">
+    <div><p class="eyebrow">Portafolio · Administración</p><h1>Gestión de creaciones</h1></div>
+    <a class="button button-primary" href="{% url 'gestion-creacion-nueva' %}" data-modal><span aria-hidden="true" class="plus">+</span> Agregar nueva creación</a>
+  </div>
+  <div class="filters" aria-label="Filtrar creaciones" hidden>
+    <button type="button" data-filter="all" aria-pressed="true">Todas <span data-count="all">0</span></button>
+    <button type="button" data-filter="active" aria-pressed="false">Activas <span data-count="active">0</span></button>
+    <button type="button" data-filter="inactive" aria-pressed="false">Inactivas <span data-count="inactive">0</span></button>
+  </div>
+  <div class="creation-list">
+    {% for creacion in creaciones %}
+    <article class="creation {% if not creacion.activo %}is-inactive{% endif %}" data-state="{% if creacion.activo %}active{% else %}inactive{% endif %}">
+      <div class="creation-image"><img src="{{ creacion.imagen }}" alt="{{ creacion.nombre }}" loading="lazy"></div>
+      <div class="creation-copy">
+        <div class="creation-meta"><span>{{ creacion.categoria.nombre }}</span><span class="status">{% if creacion.activo %}Activa{% else %}Inactiva{% endif %}</span></div>
+        <h2>{{ creacion.nombre }}</h2><p>{{ creacion.descripcion }}</p>
+      </div>
+      <div class="creation-actions">
+        <a class="button button-outline" href="{% url 'gestion-creacion-editar' creacion.pk %}" data-modal aria-label="Editar {{ creacion.nombre }}">Editar</a>
+        <form method="post" action="{% url 'gestion-creacion-toggle' creacion.pk %}">{% csrf_token %}<button class="{% if creacion.activo %}button-link{% else %}button button-outline{% endif %}" type="submit">{% if creacion.activo %}Desactivar{% else %}Activar{% endif %}</button></form>
+      </div>
+    </article>
+    {% empty %}<div class="empty-state"><h2>Aún no hay creaciones</h2><p>Agrega tu primera creación para comenzar tu portafolio.</p></div>{% endfor %}
+    <p class="empty-state" id="filter-empty" hidden>No hay creaciones en este estado.</p>
+  </div>
+  <p id="page-error" class="form-error" role="alert" hidden></p>
+  <dialog class="creation-modal" aria-labelledby="modal-title"><div id="modal-content"></div></dialog>
+{% endblock %}

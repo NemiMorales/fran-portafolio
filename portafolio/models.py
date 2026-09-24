@@ -47,6 +47,7 @@ class Creacion(models.Model):
     )
     descripcion = models.TextField()
     imagen = models.URLField()
+    activo = models.BooleanField(default=True)
 
     def __str__(self):
         return self.nombre

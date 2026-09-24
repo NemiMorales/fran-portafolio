@@ -1,0 +1,15 @@
+<div class="modal-heading">
+  <p class="eyebrow">{% if object %}Editar{% else %}Agregar{% endif %}</p>
+  <h2 id="modal-title">{% if object %}Editar creación{% else %}Nueva creación{% endif %}</h2>
+  <a href="{% url 'gestion-creaciones' %}" class="modal-close" data-close aria-label="Cerrar formulario">×</a>
+</div>
+<form class="creation-form" method="post" action="{% if object %}{% url 'gestion-creacion-editar' object.pk %}{% else %}{% url 'gestion-creacion-nueva' %}{% endif %}">
+  {% csrf_token %}
+  {% if form.errors %}<div class="form-error" role="alert">Revisa los campos indicados para guardar la creación.{{ form.non_field_errors }}</div>{% endif %}
+  <div class="field"><label for="{{ form.nombre.id_for_label }}">Nombre</label>{{ form.nombre }}{{ form.nombre.errors }}</div>
+  <div class="field"><label for="{{ form.categoria.id_for_label }}">Categoría</label>{{ form.categoria }}{{ form.categoria.errors }}</div>
+  <div class="field"><label for="{{ form.descripcion.id_for_label }}">Descripción</label>{{ form.descripcion }}{{ form.descripcion.errors }}</div>
+  <div class="image-field"><div class="field"><label for="{{ form.imagen.id_for_label }}">Imagen <span>(URL)</span></label>{{ form.imagen }}{{ form.imagen.errors }}</div><div class="image-preview" aria-label="Vista previa de la imagen"><img alt="Vista previa de la creación" hidden></div></div>
+  <p class="form-error" data-submit-error role="alert" hidden></p>
+  <div class="form-actions"><a class="button button-outline" href="{% url 'gestion-creaciones' %}" data-close>Volver al listado</a><button class="button button-primary" type="submit">{% if object %}Guardar cambios{% else %}Guardar creación{% endif %}</button></div>
+</form>

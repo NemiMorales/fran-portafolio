@@ -1,0 +1,3 @@
+{% extends 'portafolio/gestion/base.html' %}
+{% block title %}{% if object %}Editar creación{% else %}Nueva creación{% endif %}{% endblock %}
+{% block content %}<section class="standalone-form">{% include 'portafolio/gestion/_creacion_form.html' %}</section>{% endblock %}

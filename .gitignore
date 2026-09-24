@@ -2,3 +2,7 @@ gitcommit.txt
 /.venv
 __pycache__/
 *.py[cod]
+.env
+.env.local
+db.sqlite3
+.vscode/
