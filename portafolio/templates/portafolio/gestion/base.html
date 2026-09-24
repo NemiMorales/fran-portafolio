@@ -1,0 +1,26 @@
+{% load static %}
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Gestión de creaciones{% endblock %} · Francisco Muñoz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Instrument+Serif&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'portafolio/css/gestion.css' %}">
+  <script src="{% static 'portafolio/js/gestion.js' %}" defer></script>
+</head>
+<body>
+  <header class="panel-header">
+    <a class="brand" href="{% url 'home' %}">Francisco Muñoz <span>Panel</span></a>
+    <div class="session"><span>Sesión iniciada como: <strong>{{ user.username }}</strong></span>
+      <form method="post" action="{% url 'admin:logout' %}">{% csrf_token %}<button class="logout" type="submit">Cerrar sesión</button></form>
+    </div>
+  </header>
+  <main class="panel-main">
+    {% for message in messages %}<p class="notice" role="status">{{ message }}</p>{% endfor %}
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

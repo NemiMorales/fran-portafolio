@@ -2,456 +2,294 @@
 
 Portafolio profesional para Francisco Muñoz Urbina, chef ejecutivo, maestro chocolatero y pastelero.
 
-El sitio presenta su trayectoria, especialidades, creaciones y filosofía profesional en torno al chocolate como un ingrediente técnico, complejo, noble y capaz de conectar a las personas.
+El proyecto presenta su trayectoria, especialidades, creaciones y filosofía profesional en torno al chocolate.
 
-## Descripción del proyecto
+## Descripción
 
-Este proyecto fue desarrollado con Python y Django como una aplicación web orientada al backend.
+Aplicación web desarrollada con Python y Django.
 
-La estructura, configuración, creación de la aplicación, desarrollo de la lógica, lectura de datos JSON, configuración de URLs y preparación de los modelos fueron realizados por Noemí Morales.
+El proyecto comenzó utilizando información desde un archivo JSON. Posteriormente se incorporaron modelos Django, conexión local con MySQL/MariaDB y una interfaz de gestión para administrar las creaciones del portafolio.
 
-El frontend fue diseñado a partir de la visión y los requerimientos del cliente. La información profesional, la identidad y el concepto del portafolio fueron entregados a Claude Design, herramienta utilizada como apoyo para crear la propuesta visual.
+La rama actual corresponde a:
 
-Después de revisar y validar la propuesta de diseño, Codex implementó el frontend dentro del proyecto Django, conectando la interfaz con los datos entregados por la View.
-
-## Tecnologías utilizadas
-
-* Python
-* Django 6.1
-* HTML5
-* CSS3
-* JSON
-* SQLite, disponible para la futura persistencia de los modelos
-* Git y GitHub
-* Vercel
-* Claude Design
-* Codex
-
-## Características principales
-
-* Página de presentación profesional.
-* Sección de filosofía del chocolatero.
-* Especialidades profesionales.
-* Galería de creaciones.
-* Métricas y logros profesionales.
-* Trayectoria laboral.
-* Formación académica.
-* Sección de contacto.
-* Diseño responsive.
-* Datos dinámicos provenientes de un archivo JSON.
-* Modelos Django preparados para futuras versiones del proyecto.
-
-## Arquitectura de la aplicación
-
-El flujo principal de la aplicación es:
-
-```text
-Navegador
-    ↓
-URLs de Django
-    ↓
-View
-    ↓
-Archivo JSON
-    ↓
-Contexto
-    ↓
-Template HTML
-    ↓
-Frontend mostrado al usuario
+```
+feature/crud-mysql
 ```
 
-La View recibe la solicitud del navegador, lee la información almacenada en el archivo JSON y envía esos datos al Template para que sean representados en la interfaz.
+# Tecnologías utilizadas
 
-## Modelos Django
+    Python
+    Django 6.1
+    HTML5
+    CSS3
+    JavaScript
+    MySQL/MariaDB mediante XAMPP
+    Django Admin
+    Git y GitHub
+    Claude Design
+    Codex
 
-En esta evaluación se solicitó trabajar con los datos almacenados en el archivo `portafolio/data/fran.json`. Actualmente, la View lee ese archivo y envía su contenido al Template mediante el contexto `datos`; por lo tanto, la información mostrada en el sitio todavía no se obtiene desde la base de datos.
+# Funcionalidades principales
 
-Como preparación para la próxima evaluación, se definieron modelos Django para representar:
+Página pública de presentación profesional.
+Secciones de filosofía, especialidades, creaciones, logros, trayectoria, formación y contacto.
+Diseño responsive.
+Datos generales del portafolio cargados desde JSON.
+Modelos Django preparados para trabajar con base de datos.
+Conexión local con MySQL/MariaDB.
+Gestión de creaciones mediante Django Admin.
+CRUD personalizado para creaciones.
+Creación de nuevos registros.
+Edición de registros.
+Activación y desactivación de creaciones.
+Las creaciones desactivadas no aparecen en el portafolio público.
+Autenticación para acceder a la interfaz de gestión.
+Protección CSRF en los formularios.
+Variables sensibles almacenadas en .env.local.
 
-* Especialidades.
-* Creaciones.
-* Logros.
-* Experiencias laborales.
+# Arquitectura actual
 
-Los modelos quedan listos como base para la siguiente etapa del proyecto. En la próxima evaluación se podrán crear y aplicar sus migraciones, conectarlos con las Views y reemplazar gradualmente la lectura del archivo JSON por datos administrados mediante la base de datos. Esta separación es intencional y responde a lo solicitado para la evaluación actual.
+El proyecto utiliza dos fuentes de información:
 
-## Uso de inteligencia artificial
+    Datos generales
+    JSON → View → Template → Portafolio público
 
-La inteligencia artificial se utilizó como herramienta de apoyo durante el proceso de desarrollo.
+    Creaciones
+    MySQL → View → Template → Portafolio público
 
-El flujo de trabajo fue:
+Actualmente, las creaciones se obtienen desde MySQL, mientras que algunas secciones generales continúan utilizando el archivo:
 
-1. Se recopiló la visión profesional del cliente, su trayectoria y sus preferencias.
-2. Se entregó esta información a Claude Design para generar una propuesta visual.
+portafolio/data/fran.json
 
-**PROMPT UTILIZADO**
-Quiero diseñar el frontend de un portafolio profesional para Francisco Muñoz Urbina, chef ejecutivo, maestro chocolatero y pastelero de Santiago de Chile.
+Esta transición permite incorporar la base de datos gradualmente sin perder la estructura original del proyecto.
 
-El sitio debe sentirse como una experiencia editorial, sensorial y de autor. No quiero una página genérica de pastelería, una tienda de dulces ni un diseño infantil. Quiero mostrar a Francisco como un profesional creativo, técnico y apasionado por el chocolate.
+# Modelos Django
 
-CONCEPTO CENTRAL
+El proyecto contiene modelos para representar:
 
-El chocolate es un ingrediente complejo, difícil de trabajar y profundamente técnico, pero al mismo tiempo puede provocar calma, felicidad y conexión entre las personas.
+    Perfil
+    Contacto
+    Categorías
+    Creaciones
+    Especialidades
+    Logros
+    Experiencias laborales
+    Experiencias adicionales
+    Cursos
+    Estudios
+    Conocimientos
+    Idiomas
 
-La identidad debe comunicar estos contrastes:
+No todos los modelos tienen una interfaz CRUD personalizada. La gestión general de los modelos se realiza mediante Django Admin.
 
-- Complejo pero cercano.
-- Técnico pero emocional.
-- Artesanal pero contemporáneo.
-- Endémico y conectado con la tierra, pero moderno.
-- De nicho y especializado, pero capaz de unir socialmente.
-- Preciso y profesional, pero cálido y humano.
+La interfaz CRUD personalizada se concentra en el modelo Creacion, porque corresponde a la colección principal que se muestra en el portafolio.
 
-Una frase conceptual importante es:
+# Interfaz de gestión
 
-“El chocolate también puede contar historias.”
+La interfaz personalizada se encuentra en:
 
-También puedes incorporar visualmente la idea:
+http://127.0.0.1:8000/gestion/creaciones/
 
-“Un ingrediente noble, lleno de contrastes.”
+Esta sección no está enlazada desde el portafolio público.
 
-INFORMACIÓN PROFESIONAL REAL
+Permite:
 
-Utiliza únicamente esta información y no inventes nuevos datos:
+    Ver las creaciones registradas.
+    Crear una nueva creación.
+    Editar una creación.
+    Activar una creación.
+    Desactivar una creación.
 
-- Nombre: Francisco Muñoz Urbina.
-- Profesión: chef ejecutivo y maestro chocolatero/pastelero.
-- Ubicación: Santiago, Chile.
-- Actualmente trabaja como Chef Ejecutivo en LOVA Chocolates desde mayo de 2025.
-- Tiene experiencia en chocolatería premium, desarrollo de productos, formulación, control de calidad, costeo y liderazgo de equipos.
-- También ha trabajado en Pastelería Sinfonía, Café Mirandes, Wenger Haus, Giser S.A., Testardos Pizza, Otten S.A., CIG Boragó y 99 Restaurante.
-- Ha desarrollado bombones, barras, decoraciones para cafeterías y otros productos de chocolatería.
-- Ha participado en marketing, redes sociales y comercio electrónico.
-- Contribuyó a un aumento de ventas del 13%.
-- Contribuyó a una reducción del 28% en los tiempos de entrega a clientes corporativos.
-- Tiene formación en Administración Gastronómica Internacional.
-- Tiene un Técnico en Programación y Análisis de Sistemas.
-- Estudió Chocolatería y Templado.
-- Tiene conocimientos de inglés C1, portugués en curso, SQL, JavaScript, HTML y Excel.
+Las creaciones no se eliminan físicamente. Se utiliza el campo booleano activo para ocultarlas temporalmente del portafolio y permitir activarlas nuevamente en el futuro.
 
-No muestres su teléfono ni correo personal. Deja un botón o espacio de contacto profesional que después pueda conectarse a Django.
+# Django Admin
 
-DIRECCIÓN VISUAL
+El panel administrativo se encuentra en:
 
-Crea una estética elegante, oscura, cálida y editorial.
+http://127.0.0.1:8000/admin/
 
-Paleta sugerida:
+Desde allí se pueden administrar los modelos registrados en:
 
-- Cacao oscuro: #241914
-- Chocolate profundo: #3A241D
-- Crema cálida: #F2E8D8
-- Terracota: #A85F45
-- Dorado apagado: #C99A5A
-- Verde hoja oscuro: #465447
-- Rosado cacao muy sutil: #C99B91
+portafolio/admin.py
 
-La interfaz debe tener mucho contraste y buena legibilidad. El fondo principal puede ser crema cálida o chocolate oscuro, alternando secciones claras y oscuras.
+Para acceder se necesita un usuario creado mediante:
 
-Usa una combinación tipográfica:
+python manage.py createsuperuser
 
-- Una serif elegante y expresiva para títulos.
-- Una sans-serif limpia para textos, etiquetas y datos.
-- La tipografía debe sentirse artística, profesional y contemporánea.
+# Configuración local con MySQL/MariaDB
 
-REFERENCIAS DE ATMÓSFERA
+La rama feature/crud-mysql utiliza MySQL/MariaDB mediante XAMPP.
 
-Inspírate en:
+1. Crear el entorno virtual
+   python -m venv venv
+   venv\Scripts\activate
 
-- Chocolate derretido.
-- Cacao en polvo.
-- Texturas de papel artesanal.
-- Mesas de trabajo de chocolatería.
-- Detalles de laboratorio gastronómico.
-- Macrofotografía de chocolate.
-- Ingredientes naturales.
-- Hojas secas y enredaderas.
-- Hongos y formas orgánicas usados de manera sutil.
-- Contrastes entre naturaleza y precisión técnica.
-- Diseño editorial de revistas gastronómicas.
-- Portafolios de chefs y artistas contemporáneos.
-- Una energía alternativa y ligeramente experimental, sin perder elegancia.
+2. Instalar las dependencias
+   python -m pip install -r requirements.txt
 
-Los gustos personales de Francisco incluyen la naturaleza, los hongos, girasoles, monsteras, tulipanes, enredaderas, hojas secas, gatos, perros, ratas, pulpos, skate, arte, teatro, tatuajes, café, mate y chocolate. Utiliza estos elementos solo como referencias visuales sutiles. No llenes la página de ilustraciones ni hagas que parezca una página de fanático de música.
+Las principales dependencias utilizadas son:
 
-ESTRUCTURA DEL SITIO
+    Django
+    python-decouple
+    mysqlclient
 
-Diseña una landing page responsive con estas secciones:
+3. Iniciar XAMPP
 
-1. NAVBAR
+En el panel de XAMPP:
 
-- Logo textual: FRANCISCO MUÑOZ.
-- Subtítulo pequeño: CHOCOLATERO / PASTELERO.
-- Enlaces: Inicio, Filosofía, Creaciones, Trayectoria, Contacto.
-- Navbar elegante, liviana y con buen comportamiento en mobile.
+    Iniciar el módulo MySQL.
+    Apache solo es necesario para acceder a phpMyAdmin.
+    Entrar a:
+    http://localhost/phpmyadmin/
+    Crear la base de datos:
+    portafolio_db
+    Crear un usuario local con permisos sobre esa base de datos.
 
-2. HERO
+4. Crear las variables de entorno
 
-Debe ser la sección más impactante.
+Crear un archivo .env.local en la raíz del proyecto, junto a manage.py.
 
-Incluir:
+Ejemplo:
 
-- Nombre de Francisco.
-- Título profesional.
-- La frase “El chocolate también puede contar historias.”
-- Un texto breve sobre su forma de entender el chocolate.
-- Botón “Conocer su trayectoria”.
-- Botón secundario “Explorar creaciones”.
-- Una imagen protagonista de chocolate artesanal o una composición visual de autor.
-- Algún detalle gráfico que recuerde una textura molecular, una semilla de cacao o una forma orgánica.
+DATABASE_NAME=portafolio_db
+DATABASE_USER=fran_user
+DATABASE_PASSWORD=TU_CLAVE_LOCAL
+DATABASE_HOST=localhost
+DATABASE_PORT=3306
+DEBUG=True
 
-La imagen no debe mostrar un rostro inventado de Francisco. Usa una imagen conceptual de chocolate, herramientas, cacao o manos trabajando, o deja un placeholder claramente reemplazable.
+El archivo .env.local no debe subirse al repositorio porque contiene información sensible.
 
-3. FILOSOFÍA
+5. Ejecutar las migraciones
+   python manage.py makemigrations
+   python manage.py migrate
+6. Crear un usuario administrador
+   python manage.py createsuperuser
+7. Ejecutar el servidor
+   python manage.py runserver
 
-Crear una sección narrativa titulada:
+El portafolio público estará disponible en:
 
-“Un ingrediente de contrastes.”
-
-Explicar visualmente que el chocolate puede ser complejo y técnico, pero también cálido, social y capaz de provocar felicidad.
-
-Usar una composición editorial con una frase grande, párrafos cortos y detalles visuales inspirados en cacao, naturaleza y precisión.
-
-4. ESPECIALIDADES
-
-Mostrar tarjetas o bloques visuales para:
-
-- Chocolatería premium.
-- Desarrollo de productos.
-- Formulación de recetas.
-- Pastelería.
-- Control de calidad.
-- Liderazgo de equipos.
-
-Cada tarjeta debe tener un icono simple, elegante y preferentemente SVG o CSS. No uses emojis.
-
-5. CREACIONES
-
-Crear una galería visual con tarjetas para:
-
-- Bombones de autor.
-- Barras artesanales.
-- Decoraciones para cafetería.
-
-Cada tarjeta debe contener:
-
-- Imagen.
-- Nombre.
-- Categoría.
-- Descripción breve.
-- Interacción hover sutil.
-
-Deja la estructura preparada para que después las tarjetas puedan recibir datos dinámicos desde Django mediante JSON.
-
-6. LOGROS
-
-Crear una sección de métricas visuales:
-
-- 13% aumento de ventas.
-- 28% reducción de tiempos de entrega.
-- 10+ años de experiencia gastronómica.
-
-La sección debe ser elegante y no parecer un dashboard corporativo.
-
-7. TRAYECTORIA
-
-Crear una línea de tiempo o lista editorial con sus experiencias laborales principales:
-
-- LOVA Chocolates — Chef Ejecutivo — Mayo 2025 a la actualidad.
-- Café Mirandes — Chef Ejecutivo y Maestro Pastelero — 2022 a 2023.
-- Otten S.A. — Ayudante de producción y Chocolatero — 2019 a 2020.
-- CIG Boragó — Pastelero — 2019.
-
-Deja la estructura preparada para que los datos puedan venir desde un archivo JSON.
-
-8. FORMACIÓN
-
-Mostrar:
-
-- Administración Gastronómica Internacional.
-- Técnico en Programación y Análisis de Sistemas.
-- Chocolatería y Templado.
-
-9. CONTACTO
-
-Crear una sección final cálida y profesional con:
-
-- Una frase de cierre.
-- Botón “Conversemos”.
-- Espacio para Instagram o contacto profesional.
-- No inventes enlaces reales.
-- Usa placeholders claramente marcados.
-
-10. FOOTER
-
-Incluir:
-
-- Francisco Muñoz Urbina.
-- Chef ejecutivo y maestro chocolatero.
-- Santiago, Chile.
-- Año actual.
-- Enlaces sociales como placeholders.
-
-REQUISITOS TÉCNICOS DEL FRONTEND
-
-- No uses React.
-- No uses Next.js.
-- No uses backend.
-- No uses base de datos.
-- Usa HTML semántico, CSS y JavaScript vanilla solo si es estrictamente necesario.
-- Evita frameworks complejos.
-- No dependas de componentes difíciles de trasladar a Django Templates.
-- Usa clases CSS claras y organizadas.
-- Usa diseño responsive para desktop, tablet y mobile.
-- Prioriza accesibilidad, buen contraste, textos alternativos y navegación por teclado.
-- No uses información inventada.
-- No incluyas teléfono ni correo personal.
-- No uses imágenes de personas generadas que puedan hacerse pasar por Francisco.
-- Utiliza imágenes conceptuales de chocolate, cacao, herramientas, texturas e ingredientes.
-- Deja claramente identificados los lugares donde después reemplazaremos contenido estático por variables Django.
-
-PREPARACIÓN PARA DJANGO
-
-Organiza el frontend pensando que luego será integrado en un proyecto Django.
-
-Usa bloques fáciles de conectar con variables como:
-
-- {{ datos.perfil.nombre }}
-- {{ datos.perfil.titulo }}
-- {{ datos.perfil.frase }}
-- {{ datos.perfil.descripcion }}
-
-Y ciclos para listas como:
-
-- {% for especialidad in datos.especialidades %}
-- {% for creacion in datos.creaciones %}
-- {% for trabajo in datos.experiencia %}
-- {% for logro in datos.logros %}
-
-No es necesario implementar Django ahora, pero la estructura HTML debe ser compatible con Django Templates.
-
-ENTREGABLE
-
-Genera:
-
-1. Una propuesta visual completa de la landing page.
-2. HTML semántico.
-3. CSS separado y organizado.
-4. Componentes visuales reutilizables.
-5. Diseño responsive.
-6. Imágenes conceptuales o placeholders reemplazables.
-7. Una breve explicación de las decisiones visuales.
-8. Una lista de los lugares donde después se conectarán los datos JSON de Django.
-
-El resultado debe parecer el portafolio de un chocolatero de autor: profesional, sensorial, técnico, artístico y humano. 
-**PROMPT UTILIZADO**
-
-
-3. Se revisó la propuesta y se validó su coherencia con la identidad del cliente.
-
-4. Codex implementó el apartado frontend dentro de Django.
-**PROMPT UTILIZADO**
-Revisa el proyecto Django existente y utiliza el PDF adjunto “Portafolio Francisco Muñoz” como referencia visual y de contenido. Implementa el frontend del portafolio dentro de Django Templates, utilizando HTML semántico y CSS separado. Mantén la estética editorial, cálida, oscura y sofisticada del diseño, inspirada en el chocolate, el cacao, la precisión técnica y el trabajo artesanal. Requisitos: - No utilizar React. - No utilizar Next.js. - No crear una aplicación independiente. - No eliminar la View existente. - No eliminar ni reemplazar el archivo fran.json. - Mantener la aplicación sin conexión a APIs externas para los datos. - Utilizar los datos enviados desde la View mediante el contexto “datos”. - Adaptar el HTML para utilizar variables y ciclos de Django Templates. - Usar las imágenes ubicadas en portafolio/static/portafolio/img/. - Mantener textos alternativos en las imágenes. - Crear un diseño responsive para desktop, tablet y dispositivos móviles. - Utilizar una paleta basada en cacao oscuro, chocolate, crema, terracota y dorado apagado. - Implementar las secciones de presentación, filosofía, especialidades, creaciones, logros, trayectoria, formación, contacto y footer. - No inventar información profesional o personal. - No mostrar teléfono ni correo personal. - Dejar placeholders para enlaces de redes sociales o contacto profesional. Conecta correctamente las siguientes estructuras del JSON: - datos.perfil - datos.filosofia - datos.especialidades - datos.creaciones.items - datos.logros - datos.experiencia.items - datos.formacion - datos.contacto - datos.footer Utiliza ciclos como: {% for especialidad in datos.especialidades %} {% for creacion in datos.creaciones.items %} {% for logro in datos.logros %} {% for trabajo in datos.experiencia.items %} {% for estudio in datos.formacion.estudios %} Antes de modificar archivos, revisa la estructura actual del proyecto. Al finalizar: 1. Indica qué archivos fueron modificados. 2. Explica cómo se conectan el JSON, la View y el Template. 3. Verifica que el servidor Django funcione. 4. Comprueba que las imágenes y los estilos se carguen correctamente. 5. Mantén el código sencillo y comprensible para poder explicarlo en una evaluación académica.
-**PROMPT UTILIZADO**
-
-5. Se conectaron las secciones visuales con los datos enviados desde la View.
-6. Se revisó y ajustó el código para comprobar su funcionamiento.
-
-La IA fue utilizada como apoyo al diseño y desarrollo, mientras que la estructura del proyecto, la configuración de Django, el backend y la integración general fueron realizados y supervisados por la desarrolladora.
-
-## Estructura del proyecto
-
-```text
-fran_portafolio/
-│
-├── manage.py
-├── requirements.txt
-│
-├── config/
-│   ├── settings.py
-│   ├── urls.py
-│   └── ...
-│
-└── portafolio/
-    ├── admin.py
-    ├── apps.py
-    ├── models.py
-    ├── urls.py
-    ├── views.py
-    │
-    ├── data/
-    │   └── fran.json
-    │
-    ├── migrations/
-    │
-    ├── templates/
-    │   └── portafolio/
-    │       └── home.html
-    │
-    └── static/
-        └── portafolio/
-            ├── css/
-            │   └── estilos.css
-            └── img/
-```
-
-## Instalación y ejecución local
-
-Clonar el repositorio:
-
-```bash
-git clone https://github.com/NemiMorales/fran-portafolio.git
-cd fran-portafolio
-```
-
-Crear el entorno virtual:
-
-```bash
-py -m venv venv
-```
-
-Activar el entorno virtual en Windows PowerShell:
-
-```powershell
-.\venv\Scripts\Activate.ps1
-```
-
-Instalar las dependencias:
-
-```bash
-python -m pip install -r requirements.txt
-```
-
-Ejecutar las migraciones:
-
-```bash
-python manage.py migrate
-```
-
-Iniciar el servidor local:
-
-```bash
-python manage.py runserver
-```
-
-Luego abrir en el navegador:
-
-```text
 http://127.0.0.1:8000/
-```
 
-## Despliegue
+# Seguridad implementada
 
-El proyecto fue publicado utilizando Vercel.
+Las credenciales de la base de datos se almacenan en .env.local.
+.env.local está incluido en .gitignore.
+La interfaz de gestión requiere iniciar sesión.
+Los formularios utilizan protección CSRF.
+Las acciones de activar y desactivar requieren una solicitud POST.
+La interfaz de gestión no está enlazada desde el portafolio público.
+Las creaciones desactivadas no se muestran públicamente.
+La base de datos SQLite local no se utiliza en esta rama.
 
-Para permitir el funcionamiento de Django en producción se configuraron:
+# Uso de inteligencia artificial
 
-* Dependencias mediante `requirements.txt`.
-* Dominio autorizado en `ALLOWED_HOSTS`.
-* Configuración de Django para el entorno de despliegue.
+La inteligencia artificial fue utilizada como herramienta de apoyo para el diseño y la implementación.
 
-## Autora
+# Claude Design
 
-Desarrollado por **Noemí Morales**.
+Claude Design fue utilizado inicialmente para crear la propuesta visual del portafolio, considerando:
 
+    La identidad profesional de Francisco.
+    El concepto del chocolate como ingrediente técnico y emocional.
+    La estética editorial, cálida, oscura y sofisticada.
+    La estructura de las secciones del portafolio.
+    La paleta de colores y el diseño responsive.
+
+Posteriormente, se entregó a la misma herramienta la necesidad de crear una interfaz CRUD para gestionar las creaciones.
+
+Claude Design adaptó el diseño del CRUD para mantener la misma identidad visual del portafolio y ajustarlo a la nueva estructura del proyecto Django.
+
+# Codex
+
+Codex fue utilizado como apoyo para:
+
+    Revisar la estructura existente del proyecto.
+    Integrar el frontend dentro de Django Templates.
+
+La estructura general del proyecto, la configuración, las decisiones técnicas, las pruebas y la supervisión del resultado fueron realizadas por la desarrolladora.
+
+# Estructura principal del proyecto
+
+    fran-portafolio/
+    │
+    ├── manage.py
+    ├── requirements.txt
+    ├── .env.local
+    ├── .gitignore
+    │
+    ├── config/
+    │   ├── settings.py
+    │   ├── urls.py
+    │   ├── asgi.py
+    │   └── wsgi.py
+    │
+    └── portafolio/
+        ├── admin.py
+        ├── apps.py
+        ├── forms.py
+        ├── models.py
+        ├── tests.py
+        ├── urls.py
+        ├── views.py
+        │
+        ├── data/
+        │   └── fran.json
+        │
+        ├── migrations/
+        │
+        ├── templates/
+        │   └── portafolio/
+        │       ├── home.html
+        │       └── gestion/
+        │           ├── base.html
+        │           ├── creacion_form.html
+        │           └── creaciones_lista.html
+        │
+        └── static/
+            └── portafolio/
+                ├── css/
+                ├── js/
+                └── img/
+
+# Ramas del proyecto
+
+La rama principal contiene la versión base del proyecto.
+
+La rama actual contiene la implementación de MySQL:
+
+main
+feature/crud-mysql
+
+En una etapa posterior se puede crear una rama independiente para PostgreSQL:
+
+feature/crud-postgresql
+
+La versión PostgreSQL reutilizará la mayor parte del CRUD y cambiará principalmente:
+
+El motor de Django.
+El driver de Python.
+El puerto.
+El usuario y la contraseña.
+La base de datos utilizada.
+
+# Despliegue
+
+La conexión actual con MySQL está preparada para funcionar localmente mediante XAMPP.
+
+No se deben utilizar los valores localhost ni las credenciales locales en un entorno de producción.
+
+Para desplegar el proyecto se necesitaría:
+
+Una base de datos MySQL o PostgreSQL alojada.
+Variables de entorno configuradas en la plataforma de despliegue.
+Un servidor compatible con Django.
+Configuración de ALLOWED_HOSTS.
+Configuración de archivos estáticos.
+Configuración de seguridad para producción.
+
+# Autora
+
+Desarrollado por Noemí Morales.
 Proyecto académico y de portafolio.
