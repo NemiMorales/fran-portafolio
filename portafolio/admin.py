@@ -1,3 +1,32 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import (
+    Categoria,
+    Conocimiento,
+    Contacto,
+    Curso,
+    Creacion,
+    Especialidad,
+    Estudio,
+    Experiencia,
+    ExperienciasAdicionales,
+    Idioma,
+    Logro,
+    Perfil,
+)
+
+
+admin.site.register([
+    Categoria,
+    Conocimiento,
+    Contacto,
+    Curso,
+    Creacion,
+    Especialidad,
+    Estudio,
+    Experiencia,
+    ExperienciasAdicionales,
+    Idioma,
+    Logro,
+    Perfil,
+])
