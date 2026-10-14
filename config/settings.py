@@ -1,12 +1,16 @@
 
 from pathlib import Path
+import os
 from decouple import Config, RepositoryEnv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-config = Config(
-    RepositoryEnv(BASE_DIR / ".env.local")
-)
+ENV_FILE = BASE_DIR / ".env.local"
+
+if ENV_FILE.exists():
+    config = Config(RepositoryEnv(ENV_FILE))
+else:
+    config = Config(os.environ)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.1/howto/deployment/checklist/
